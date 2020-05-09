@@ -25,7 +25,7 @@ SECRET_KEY = ')*y_rb*5@e$&c8rr64jvn%c^d3q0vb+r99ts4qkib#uq^+mpvd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['hij-media.herokuapp.com'] if DEBUG == False else []
+ALLOWED_HOSTS = ['hij-media.herokuapp.com','localhost'] if DEBUG == False else []
 
 
 # Application definition
@@ -132,9 +132,43 @@ STATICFILES_DIRS = [
 ]
 
 # Add configuratiion for static files storage using whitenoise
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 import dj_database_url
 prod_db = dj_database_url.config(conn_max_age = 500)
 DATABASES['default'].update(prod_db)
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt' : "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'mysite.log',
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers':['file'],
+            'propagate': True,
+            'level':'DEBUG',
+        },
+        'MYAPP': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+        },
+    }
+}
+
