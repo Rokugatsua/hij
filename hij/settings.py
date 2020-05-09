@@ -132,7 +132,7 @@ STATICFILES_DIRS = [
 ]
 
 # Add configuratiion for static files storage using whitenoise
-STATICFILES_STORAGE = 'whitenoise.storage.CompresesedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 import dj_database_url
