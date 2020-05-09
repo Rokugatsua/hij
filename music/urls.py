@@ -10,9 +10,3 @@ urlpatterns = [
     path('album/<int:album_id>',views.album_detail, name="album"),
 
 ]
-
-if settings.DEBUG:
-    urlpatterns += [
-        re_path(r'^static/(?P<path>.*)$', vew.serve),
-    ]
-    
