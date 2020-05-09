@@ -25,7 +25,7 @@ SECRET_KEY = ')*y_rb*5@e$&c8rr64jvn%c^d3q0vb+r99ts4qkib#uq^+mpvd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://hij-media.herokuapp.com/'] if DEBUG == False else []
+ALLOWED_HOSTS = ['hij-media.herokuapp.com'] if DEBUG == False else []
 
 
 # Application definition
