@@ -1,0 +1,15 @@
+{% extends 'indexs.html' %}
+
+{% block title %}
+{{ albums.title }}
+{% endblock title %}
+
+{% block contents %}
+<img src="{{albums.cover_art}}"/>
+
+<ul>
+    <li><label>{{albums.title}}</label></li>
+    <li><p>{{albums.label}}</p></li>
+    <li><p>{{albums.rel_date}}</p></li>
+</ul>
+{% endblock contents %}

@@ -1,0 +1,19 @@
+{% extends 'indexs.html' %}
+
+{% block contents %}
+<h1>Song list</h1>
+
+<table>
+    <thead><tr>
+    <td> Title </td><td>Artist</td><td> Album </td>
+    </tr></thead>
+    {# loop item on context list name: latest_song_list #}
+    {% for song in latest_song_list %}
+    <tr>
+        <td>{{ song.title }}</td>
+        <td><a href="{% url 'artist' song.artist.name %}">{{ song.artist.name}}</a></td>
+        <td><a href="{% url 'album' song.album.id %}">{{ song.album.title }}</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock contents %}
