@@ -25,7 +25,7 @@ SECRET_KEY = ')*y_rb*5@e$&c8rr64jvn%c^d3q0vb+r99ts4qkib#uq^+mpvd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['hij-media.herokuapp.com','localhost'] if DEBUG == False else []
+ALLOWED_HOSTS = ['hij-media.herokuapp.com'] if DEBUG == False else []
 
 
 # Application definition
@@ -132,7 +132,7 @@ STATICFILES_DIRS = [
 ]
 
 # Add configuratiion for static files storage using whitenoise
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 import dj_database_url
