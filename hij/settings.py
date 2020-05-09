@@ -25,7 +25,7 @@ SECRET_KEY = ')*y_rb*5@e$&c8rr64jvn%c^d3q0vb+r99ts4qkib#uq^+mpvd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://hij-media.herokuapp.com/']
+ALLOWED_HOSTS = ['https://hij-media.herokuapp.com/'] if DEBUG == False else []
 
 
 # Application definition
@@ -48,7 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middlewere.WhiteNoiseMiddlewere',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'hij.urls'
@@ -69,7 +69,9 @@ TEMPLATES = [
     },
 ]
 
+#original
 WSGI_APPLICATION = 'hij.wsgi.application'
+#WSGI_APPLICATION = 'wsgi.application'
 
 
 # Database
