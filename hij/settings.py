@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')*y_rb*5@e$&c8rr64jvn%c^d3q0vb+r99ts4qkib#uq^+mpvd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://hij-media.herokuapp.com/']
 
 
 # Application definition
@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middlewere.WhiteNoiseMiddlewere',
 ]
 
 ROOT_URLCONF = 'hij.urls'
@@ -117,12 +118,21 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+PROJECT_ROOT = os.path.join(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
+    (os.path.join(BASE_DIR,'static'))
     ("css",os.path.join(BASE_DIR,"static","css")),
     ("js", os.path.join(BASE_DIR,"static","js")),
     ("icon", os.path.join(BASE_DIR,"static","icon")),
 ]
 
+# Add configuratiion for static files storage using whitenoise
+STATICFILES_STORAGE = 'whitenoise.storage.CompresesedManifestStaticFilesStorage'
+
+
+import dj_database_url
+prod_db = dj_database_url.config(conn_max_age = 500)
+DATABASES['default'].update(prod_db)
